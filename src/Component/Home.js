@@ -3,10 +3,10 @@ import img from "../asset/vintrica_splash.jpg"
 import Header from './Header';
 import Section from './Section';
 
-const Home = () => {
+const Home = ({ setId }) => {
     return (
         <div className='mt-[48px]'>
-            <Section></Section>
+            <Section setId={setId}></Section>
             <div className="hero bg-base-200 p-14">
                 <div className="hero-content flex justify-between lg:flex-row-reverse px-20">
                     <img src={img} alt="" className="max-w-sm rounded-lg shadow-2xl" />
