@@ -1,6 +1,5 @@
 import React from 'react';
 import img from "../asset/vintrica_splash.jpg"
-import Header from './Header';
 import Section from './Section';
 
 const Home = ({ setId }) => {

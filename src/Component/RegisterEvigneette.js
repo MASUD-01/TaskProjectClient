@@ -1,19 +1,10 @@
 import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+const RegisterEvigneette = ({ id, data, loading }) => {
 
-const RegisterEvigneette = ({ id }) => {
-    const [data, setData] = useState([])
-    useEffect(() => {
-        fetch(`http://localhost:5000/task/${id}`)
-            .then(res => res.json())
-            .then(data => setData(data))
-    }, [id])
-    console.log(id)
-    console.log(data)
     return (
         <div className='max-w-[800px] mx-auto h-auto mb-4 -z-10 mt-[48px]'>
             <h1 className='text-2xl'>Register e-vignette</h1>
+            {loading && <p>loading...</p>}
             <div className='flex mt-4 justify-between'>
                 <div className='bg-neutral-300 p-2 rounded'>Select e-vigneette</div>
                 <div className={id ? 'bg-orange-400 p-2 rounded' : 'bg-neutral-300 p-2 rounded'}>Number {"&"} validity</div>
@@ -30,7 +21,6 @@ const RegisterEvigneette = ({ id }) => {
             <div className='bg-gray-100 p-3'>
                 <h1 className='text-2xl mb-4'>Vehicle details</h1>
                 <p className='mb-6'>Country of registration <select className="select select-warning border-gray-400 border-2 h-[40px] rounded w-full max-w-xs">
-                    <option disabled selected></option>
                     <option>Cheese</option>
                     <option>Veggie</option>
                     <option>Pepperoni</option>

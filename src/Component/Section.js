@@ -3,13 +3,13 @@ import img from "../asset/splash-index.png"
 import { useNavigate } from "react-router-dom";
 
 const Section = ({ setId }) => {
-    const [myCar, setMyCar] = useState("");
-    const [myCars, setMyCars] = useState("");
-    const [myCarss, setMyCarss] = useState("");
+    const [myCar, setMyCar] = useState("default");
+    const [myCars, setMyCars] = useState("default");
+    const [myCarss, setMyCarss] = useState("default");
     const navigate = useNavigate();
 
     const handleTask = () => {
-        fetch('http://localhost:5000/task', {
+        fetch('https://taskprojects.onrender.com/task', {
             method: "POST",
             headers: {
                 'content-Type': 'application/json'
@@ -17,7 +17,7 @@ const Section = ({ setId }) => {
             body: JSON.stringify({ Country: myCar, vihicles: myCars, Duration: myCarss })
         }).then(res => res.json())
             .then(data => {
-                console.log(data)
+
                 setId(data?.insertedId)
             })
 
@@ -47,16 +47,16 @@ const Section = ({ setId }) => {
                 <h1 className='text-2xl'>E-vignettes at vintrica</h1>
                 <p className='my-2'>Buy a motorway e-vignette quickly and easily at vintrica.</p>
                 <div className='bg-orange-600 py-3 flex justify-evenly rounded'>
-                    <select className="select select-secondary w-full h-[40px] max-w-xs" onChange={handleChange}>
-                        <option disabled selected>Country</option>
+                    <select className="select select-secondary w-full h-[40px] max-w-xs" defaultValue={myCar} onChange={handleChange}>
+                        <option disabled value="default" hidden>Country</option>
                         <option value="Bulgaria">Bulgaria</option>
                         <option value="Hungray">Hungray</option>
                         <option value="Slovakia">Slovakia</option>
                         <option value="Czech republic">Czech republic</option>
                     </select>
-                    <select className="select select-secondary w-full h-[40px] max-w-xs" onChange={handleChanges}>
+                    <select className="select select-secondary w-full h-[40px] max-w-xs" defaultValue={myCars} onChange={handleChanges}>
 
-                        <option disabled selected>vihicles Catagory</option>
+                        <option disabled value="default" hidden>vihicles Catagory</option>
                         <option value="vihicles">vihicles</option>
                         <option value="Thirils">Thirils</option>
                         <option value="Cars">Cars</option>
@@ -65,9 +65,9 @@ const Section = ({ setId }) => {
                         <option value="Buses">Buses</option>
                         <option value="Thrills for catagory D2 and B2">Thrills for catagory D2 and B2</option>
                     </select>
-                    <select className="select select-secondary w-full h-[40px] max-w-xs" onChange={handleChangess}>
+                    <select className="select select-secondary w-full h-[40px] max-w-xs" defaultValue={myCarss} onChange={handleChangess}>
 
-                        <option disabled selected>Duration</option>
+                        <option disabled value="default" hidden>Duration</option>
                         <option value="1 weeked">1 weeked</option>
                         <option value="1 week">1 week</option>
                         <option value="1 month">1 month</option>
